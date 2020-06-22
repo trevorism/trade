@@ -1,0 +1,77 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        maven {
+            url uri("http://trevorism-build.eastus.cloudapp.azure.com/nexus/repository/maven-releases")
+        }
+    }
+    dependencies {
+        classpath 'com.google.cloud.tools:appengine-gradle-plugin:2.1.0'
+        classpath 'com.trevorism:gradle-acceptance-plugin:2.0.0'
+        classpath 'com.trevorism:gradle-gae-deploy-plugin:1.1.1'
+        classpath 'com.trevorism:gradle-release-plugin:0.4.0'
+    }
+}
+
+plugins {
+    id "groovy"
+    id "war"
+    id "jacoco"
+}
+
+apply plugin: 'com.google.cloud.tools.appengine'
+apply plugin: "com.trevorism.gradle.acceptance"
+apply plugin: "com.trevorism.gradle.gae.deploy"
+apply plugin: "com.trevorism.gradle.release"
+
+repositories {
+    mavenCentral()
+    maven {
+        url uri("http://trevorism-build.eastus.cloudapp.azure.com/nexus/repository/maven-releases")
+    }
+}
+
+def jerseyVersion = "2.29.1"
+
+dependencies {
+    implementation 'org.codehaus.groovy:groovy-all:2.5.8'
+
+    implementation "org.glassfish.jersey.containers:jersey-container-servlet:$jerseyVersion"
+    implementation "org.glassfish.jersey.media:jersey-media-json-jackson:$jerseyVersion"
+    implementation "org.glassfish.jersey.inject:jersey-hk2:$jerseyVersion"
+    implementation 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.10.0'
+
+    implementation 'org.slf4j:slf4j-nop:1.7.28'
+    implementation 'io.swagger:swagger-jersey2-jaxrs:1.5.23'
+
+    implementation 'com.trevorism:secure-utils:1.0.2'
+    implementation 'com.trevorism:kraken:0.0.1'
+
+    acceptanceImplementation 'io.cucumber:cucumber-groovy:4.7.1'
+    acceptanceImplementation 'com.trevorism:http-utils:1.0.2'
+    acceptanceImplementation 'org.apache.httpcomponents:httpclient:4.5.10'
+
+    testImplementation 'junit:junit:4.12'
+}
+
+
+appengine {
+    deploy {
+        projectId = "trevorism-trade"
+        stopPreviousVersion = true
+        promote = true
+        version = "0-0-1"
+    }
+}
+
+check {
+    dependsOn('jacocoTestReport')
+}
+
+task deliver {
+    dependsOn("build","appengineDeploy")
+    appengineDeploy.mustRunAfter("check")
+}
