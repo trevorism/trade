@@ -49,6 +49,7 @@ class RootController {
 
     @GET
     @Path("bitcoin")
+    @Produces(MediaType.APPLICATION_JSON)
     Price getBitcoinPrice(){
         def client = new DefaultKrakenClient()
         client.getCurrentPrice("XBTUSD")
