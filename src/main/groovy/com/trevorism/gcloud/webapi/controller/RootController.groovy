@@ -1,6 +1,7 @@
 package com.trevorism.gcloud.webapi.controller
 
 import com.trevorism.kraken.impl.DefaultKrakenClient
+import com.trevorism.kraken.model.AssetBalance
 import com.trevorism.kraken.model.Price
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
@@ -53,5 +54,13 @@ class RootController {
     Price getBitcoinPrice(){
         def client = new DefaultKrakenClient()
         client.getCurrentPrice("XBTUSD")
+    }
+
+    @GET
+    @Path("balance")
+    @Produces(MediaType.APPLICATION_JSON)
+    Set<AssetBalance> getAccountBalance(){
+        def client = new DefaultKrakenClient()
+        client.getAccountBalance()
     }
 }
