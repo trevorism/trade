@@ -48,7 +48,7 @@ dependencies {
     implementation 'io.swagger:swagger-jersey2-jaxrs:1.5.23'
 
     implementation 'com.trevorism:secure-utils:1.0.2'
-    implementation 'com.trevorism:kraken:0.1.1'
+    implementation 'com.trevorism:kraken:0.2.0'
 
     acceptanceImplementation 'io.cucumber:cucumber-groovy:4.7.1'
     acceptanceImplementation 'com.trevorism:http-utils:1.0.2'

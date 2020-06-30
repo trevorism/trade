@@ -2,7 +2,6 @@ package com.trevorism.gcloud.webapi.controller
 
 import com.trevorism.kraken.impl.DefaultKrakenClient
 import com.trevorism.kraken.impl.DefaultPrivateKrakenClient
-import com.trevorism.kraken.impl.DefaultPublicKrakenClient
 import org.junit.Test
 
 /**
