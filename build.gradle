@@ -49,9 +49,10 @@ dependencies {
 
     implementation 'com.trevorism:secure-utils:1.0.2'
     implementation 'com.trevorism:kraken:0.2.0'
+    implementation 'com.trevorism:eventhub-client:1.4.2'
+    implementation 'com.trevorism:http-utils:1.0.2'
 
     acceptanceImplementation 'io.cucumber:cucumber-groovy:4.7.1'
-    acceptanceImplementation 'com.trevorism:http-utils:1.0.2'
     acceptanceImplementation 'org.apache.httpcomponents:httpclient:4.5.10'
 
     testImplementation 'junit:junit:4.12'

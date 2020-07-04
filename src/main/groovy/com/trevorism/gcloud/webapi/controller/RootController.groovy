@@ -48,19 +48,4 @@ class RootController {
         Response.temporaryRedirect(new URI("/swagger/index.html")).build()
     }
 
-    @GET
-    @Path("bitcoin")
-    @Produces(MediaType.APPLICATION_JSON)
-    Price getBitcoinPrice(){
-        def client = new DefaultKrakenClient()
-        client.getCurrentPrice("XBTUSD")
-    }
-
-    @GET
-    @Path("balance")
-    @Produces(MediaType.APPLICATION_JSON)
-    Set<AssetBalance> getAccountBalance(){
-        def client = new DefaultKrakenClient()
-        client.getAccountBalance()
-    }
 }
