@@ -5,9 +5,9 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/trevorism/trade)
 ![GitHub top language](https://img.shields.io/github/languages/top/trevorism/trade)
 
-Currency trading API
+Trevorism trading platform API
 
-Current version: 0.0.1
+Current version: 0.1.0
 
 [Trevorism Trading](https://trade.trevorism.com/)
 

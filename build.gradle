@@ -49,6 +49,7 @@ dependencies {
 
     implementation 'com.trevorism:secure-utils:1.0.2'
     implementation 'com.trevorism:kraken:0.2.0'
+    implementation 'com.trevorism:threshold-client:0.1.1'
     implementation 'com.trevorism:eventhub-client:1.4.2'
     implementation 'com.trevorism:http-utils:1.0.2'
 
