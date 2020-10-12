@@ -20,10 +20,15 @@ class BalanceControllerTest {
     @Test
     void testGetAccountBalance() {
         BalanceController balanceController = new BalanceController()
-        balanceController.krakenClient = [getAccountBalance:{ -> [new AssetBalance(assetName: "testUSD", balance: 10)] as Set}] as KrakenClient
+        balanceController.krakenClient = [getAccountBalances:{ -> [new AssetBalance(assetName: "testUSD", balance: 10)] as Set}] as KrakenClient
         def result = balanceController.getAccountBalance()
         assert result
         assert result[0].balance == 10
+
+    }
+
+    @Test
+    void testDoubleValueOf(){
 
     }
 }

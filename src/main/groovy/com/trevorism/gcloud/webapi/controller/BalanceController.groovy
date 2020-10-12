@@ -1,11 +1,5 @@
 package com.trevorism.gcloud.webapi.controller
 
-import com.google.gson.Gson
-import com.trevorism.event.EventProducer
-import com.trevorism.event.PingingEventProducer
-import com.trevorism.gcloud.model.Alert
-import com.trevorism.http.HttpClient
-import com.trevorism.http.JsonHttpClient
 import com.trevorism.kraken.KrakenClient
 import com.trevorism.kraken.impl.DefaultKrakenClient
 import com.trevorism.kraken.model.AssetBalance
@@ -56,6 +50,6 @@ class BalanceController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     Set<AssetBalance> getAccountBalance(){
-        krakenClient.getAccountBalance()
+        krakenClient.getAccountBalances()
     }
 }

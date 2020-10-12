@@ -30,7 +30,7 @@ class RootControllerTest {
     @Test
     void testGetBalances(){
         DefaultPrivateKrakenClient client = new DefaultPrivateKrakenClient()
-        client.accountBalance.each {
+        client.accountBalances.each {
             println it
         }
     }
