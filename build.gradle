@@ -73,7 +73,7 @@ check {
 }
 
 task deliver {
-    dependsOn("build","appengineDeploy")
+    dependsOn("build","appengineDeploy", "acceptance")
     appengineDeploy.mustRunAfter("check")
 }
 

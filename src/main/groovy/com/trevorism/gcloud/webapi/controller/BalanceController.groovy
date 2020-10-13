@@ -11,6 +11,7 @@ import com.trevorism.threshold.PingingThresholdClient
 import com.trevorism.threshold.ThresholdClient
 import com.trevorism.threshold.strategy.AlertWhenThresholdMet
 import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
 
 import javax.ws.rs.GET
 import javax.ws.rs.Path
@@ -25,6 +26,7 @@ class BalanceController {
     private ThresholdClient thresholdClient = new FastThresholdClient()
     private KrakenClient krakenClient = new DefaultKrakenClient()
 
+    @ApiOperation(value = "Checks thresholds for certain pairs, invoked periodically buy cloud scheduler")
     @GET
     @Path("check")
     @Produces(MediaType.APPLICATION_JSON)
@@ -41,6 +43,7 @@ class BalanceController {
         return result
     }
 
+    @ApiOperation(value = "Get the current price of an asset pair **Secure")
     @GET
     @Path("check/{pairName}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -50,6 +53,7 @@ class BalanceController {
         return price
     }
 
+    @ApiOperation(value = "Get the total account balance for each asset **Secure")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Secure(Roles.USER)
