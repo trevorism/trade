@@ -48,7 +48,7 @@ dependencies {
     implementation 'io.swagger:swagger-jersey2-jaxrs:1.6.2'
 
     implementation 'com.trevorism:secure-utils:3.3.0'
-    implementation 'com.trevorism:kraken:0.4.1'
+    implementation 'com.trevorism:kraken:0.5.0'
     implementation 'com.trevorism:threshold-client:0.2.0'
     implementation 'com.trevorism:eventhub-client:2.0.0'
 
@@ -64,7 +64,7 @@ appengine {
         projectId = "trevorism-trade"
         stopPreviousVersion = true
         promote = true
-        version = "0-2-0"
+        version = "0-3-0"
     }
 }
 
