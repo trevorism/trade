@@ -32,10 +32,11 @@ class BalanceController {
     @Produces(MediaType.APPLICATION_JSON)
     Map checkPairsAgainstThresholds(){
         new PingingThresholdClient().ping()
-
-        def pairs = ["XRPUSD", "XBTUSD", "SCXBT", "ADAXBT", "WAVESXBT"]
         def result = [:]
-        pairs.each { pairName ->
+
+        def pairs = thresholdClient.list().findAll{it.name.toUpperCase().contains("USD") || it.name.toUpperCase().contains("XBT")}
+        pairs?.each { threshold ->
+            String pairName = threshold.name
             Price price = getPrice(pairName)
             def thresholdResponse = thresholdClient.evaluate(pairName, price.last, new AlertWhenThresholdMet())
             result.put(pairName, thresholdResponse)
@@ -49,8 +50,7 @@ class BalanceController {
     @Produces(MediaType.APPLICATION_JSON)
     @Secure(Roles.USER)
     Price getPrice(@PathParam("pairName") String pairName){
-        Price price = krakenClient.getCurrentPrice(pairName)
-        return price
+        krakenClient.getCurrentPrice(pairName)
     }
 
     @ApiOperation(value = "Get the total account balance for each asset **Secure")

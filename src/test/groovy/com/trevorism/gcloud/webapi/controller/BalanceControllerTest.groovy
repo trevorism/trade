@@ -3,6 +3,8 @@ package com.trevorism.gcloud.webapi.controller
 import com.trevorism.kraken.KrakenClient
 import com.trevorism.kraken.model.AssetBalance
 import com.trevorism.kraken.model.Price
+import com.trevorism.threshold.ThresholdClient
+import com.trevorism.threshold.model.Threshold
 import org.junit.Test
 
 class BalanceControllerTest {
@@ -28,7 +30,13 @@ class BalanceControllerTest {
     }
 
     @Test
-    void testDoubleValueOf(){
+    void testCheckPairsAgainstThresholds(){
+        BalanceController balanceController = new BalanceController()
+        balanceController.thresholdClient = [list: {[new Threshold(name: "xrpusd")]}, evaluate: {pair, price, action -> true}] as ThresholdClient
+        balanceController.krakenClient = [getCurrentPrice: { pair -> new Price(last: 100)}] as KrakenClient
 
+        def result = balanceController.checkPairsAgainstThresholds()
+        assert result
+        assert result["xrpusd"]
     }
 }
