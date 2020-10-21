@@ -68,7 +68,6 @@ class TradeControllerTest {
 
 
     class TestKrakenClient implements KrakenClient{
-
         @Override
         Set<AssetBalance> getAccountBalances() {
             return null

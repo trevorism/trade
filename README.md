@@ -7,7 +7,7 @@
 
 Trevorism trading platform API
 
-Current version: 0.3.1
+Current version: 0.4.0
 
 [Trevorism Trading](https://trade.trevorism.com/)
 

@@ -1,7 +1,5 @@
 package com.trevorism.gcloud.webapi.controller
 
-import com.trevorism.kraken.impl.DefaultKrakenClient
-import com.trevorism.kraken.impl.DefaultPrivateKrakenClient
 import org.junit.Test
 
 /**
@@ -22,16 +20,8 @@ class RootControllerTest {
     }
 
     @Test
-    void testGetPrice(){
-        DefaultKrakenClient client = new DefaultKrakenClient()
-        println client.getCurrentPrice("XBTUSD")
-    }
-
-    @Test
-    void testGetBalances(){
-        DefaultPrivateKrakenClient client = new DefaultPrivateKrakenClient()
-        client.accountBalances.each {
-            println it
-        }
+    void testRootControllerHelpPage(){
+        RootController rootController = new RootController()
+        assert rootController.help()
     }
 }

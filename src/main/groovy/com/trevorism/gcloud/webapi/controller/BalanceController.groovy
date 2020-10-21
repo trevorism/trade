@@ -1,15 +1,11 @@
 package com.trevorism.gcloud.webapi.controller
 
-import com.trevorism.kraken.KrakenClient
-import com.trevorism.kraken.impl.DefaultKrakenClient
+import com.trevorism.gcloud.service.DefaultTradeService
+import com.trevorism.gcloud.service.TradeService
 import com.trevorism.kraken.model.AssetBalance
 import com.trevorism.kraken.model.Price
 import com.trevorism.secure.Roles
 import com.trevorism.secure.Secure
-import com.trevorism.threshold.FastThresholdClient
-import com.trevorism.threshold.PingingThresholdClient
-import com.trevorism.threshold.ThresholdClient
-import com.trevorism.threshold.strategy.AlertWhenThresholdMet
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 
@@ -23,25 +19,14 @@ import javax.ws.rs.core.MediaType
 @Path("/balance")
 class BalanceController {
 
-    private ThresholdClient thresholdClient = new FastThresholdClient()
-    private KrakenClient krakenClient = new DefaultKrakenClient()
+    TradeService tradeService = new DefaultTradeService()
 
     @ApiOperation(value = "Checks thresholds for certain pairs, invoked periodically buy cloud scheduler")
     @GET
     @Path("check")
     @Produces(MediaType.APPLICATION_JSON)
-    Map checkPairsAgainstThresholds(){
-        new PingingThresholdClient().ping()
-        def result = [:]
-
-        def pairs = thresholdClient.list().findAll{it.name.toUpperCase().contains("USD") || it.name.toUpperCase().contains("XBT")}
-        pairs?.each { threshold ->
-            String pairName = threshold.name
-            Price price = getPrice(pairName)
-            def thresholdResponse = thresholdClient.evaluate(pairName, price.last, new AlertWhenThresholdMet())
-            result.put(pairName, thresholdResponse)
-        }
-        return result
+    Map checkPairsAgainstThresholds() {
+        tradeService.checkPairsAgainstThresholds()
     }
 
     @ApiOperation(value = "Get the current price of an asset pair **Secure")
@@ -49,15 +34,24 @@ class BalanceController {
     @Path("check/{pairName}")
     @Produces(MediaType.APPLICATION_JSON)
     @Secure(Roles.USER)
-    Price getPrice(@PathParam("pairName") String pairName){
-        krakenClient.getCurrentPrice(pairName)
+    Price getPrice(@PathParam("pairName") String pairName) {
+        tradeService.getPrice(pairName)
     }
 
     @ApiOperation(value = "Get the total account balance for each asset **Secure")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Secure(Roles.USER)
-    Set<AssetBalance> getAccountBalance(){
-        krakenClient.getAccountBalances()
+    Set<AssetBalance> getAccountBalance() {
+        tradeService.getAccountBalance()
+    }
+
+    @ApiOperation(value = "Get the current price of an asset pair **Secure")
+    @GET
+    @Path("total/{assetName}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Secure(Roles.USER)
+    double getTotal(@PathParam("assetName") String assetName) {
+        tradeService.getTotal(assetName)
     }
 }
