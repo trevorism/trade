@@ -46,7 +46,7 @@ class BalanceController {
         tradeService.getAccountBalance()
     }
 
-    @ApiOperation(value = "Get the current price of an asset pair **Secure")
+    @ApiOperation(value = "Get the current account value in terms of an asset name **Secure")
     @GET
     @Path("total/{assetName}")
     @Produces(MediaType.APPLICATION_JSON)
