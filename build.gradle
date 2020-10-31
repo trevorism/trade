@@ -34,7 +34,7 @@ repositories {
     }
 }
 
-def jerseyVersion = "2.31"
+def jerseyVersion = "2.32"
 
 dependencies {
     implementation 'org.codehaus.groovy:groovy-all:2.5.8'
@@ -42,15 +42,15 @@ dependencies {
     implementation "org.glassfish.jersey.containers:jersey-container-servlet:$jerseyVersion"
     implementation "org.glassfish.jersey.media:jersey-media-json-jackson:$jerseyVersion"
     implementation "org.glassfish.jersey.inject:jersey-hk2:$jerseyVersion"
-    implementation 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.11.1'
+    implementation 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.11.3'
 
     implementation 'org.slf4j:slf4j-nop:1.7.30'
     implementation 'io.swagger:swagger-jersey2-jaxrs:1.6.2'
 
-    implementation 'com.trevorism:secure-utils:3.3.1'
+    implementation 'com.trevorism:secure-utils:3.4.0'
     implementation 'com.trevorism:kraken:0.5.0'
-    implementation 'com.trevorism:threshold-client:0.2.0'
-    implementation 'com.trevorism:eventhub-client:2.0.0'
+    implementation 'com.trevorism:threshold-client:0.3.0'
+    implementation 'com.trevorism:eventhub-client:2.3.0'
 
     acceptanceImplementation 'io.cucumber:cucumber-groovy:4.7.1'
     acceptanceImplementation 'org.apache.httpcomponents:httpclient:4.5.12'
@@ -64,7 +64,7 @@ appengine {
         projectId = "trevorism-trade"
         stopPreviousVersion = true
         promote = true
-        version = "0-4-0"
+        version = "0-5-0"
     }
 }
 

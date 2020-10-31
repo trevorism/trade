@@ -11,6 +11,6 @@ class StartupSecurity extends ResourceConfig {
 
     StartupSecurity(){
         log.info("Ensuring only token based auth...")
-        Validators.allValidators = [Validators.bearerTokenValidator, Validators.cookieValidator]
+        Validators.removeValidator(Validators.passwordValidator)
     }
 }
