@@ -39,11 +39,11 @@ class DefaultTradeService implements TradeService {
         return total
     }
 
-    private boolean isUSDXBT(AssetBalance it, String assetName) {
+    private static boolean isUSDXBT(AssetBalance it, String assetName) {
         it.assetName.toUpperCase() == "USD" && assetName.toUpperCase() == "XBT"
     }
 
-    private boolean isUSD(AssetBalance it, String assetName) {
+    private static boolean isUSD(AssetBalance it, String assetName) {
         it.assetName.toUpperCase() == "USD" && assetName.toUpperCase() == "USD"
     }
 
