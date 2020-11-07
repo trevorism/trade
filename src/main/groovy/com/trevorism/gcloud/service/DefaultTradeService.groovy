@@ -24,8 +24,13 @@ class DefaultTradeService implements TradeService {
 
         getAccountBalance().each {
             double assetPrice = 1
-            if(it.assetName.toUpperCase() == "USD"){
+            if(it.assetName.toUpperCase() == "USD" && assetName.toUpperCase() == "USD"){
                 total += it.balance
+                return
+            }
+            if(it.assetName.toUpperCase() == "USD" && assetName.toUpperCase() == "XBT"){
+                Price price = getPrice("xbtusd")
+                total += it.balance / price.last
                 return
             }
             assetPrice = getAssetPrice(assetName, it, assetPrice)
