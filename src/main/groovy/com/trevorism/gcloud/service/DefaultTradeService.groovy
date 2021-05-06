@@ -18,17 +18,21 @@ class DefaultTradeService implements TradeService {
     @Override
     double getTotal(String assetName) {
         double total = 0
-        if(!assetName){
+        if (!assetName) {
             return 0
         }
 
         getAccountBalance().each {
             double assetPrice = 1
-            if(isUSD(it, assetName)){
+            if (isAStakingAsset(it)) {
+                return
+            }
+
+            if (isUSD(it, assetName)) {
                 total += it.balance
                 return
             }
-            if(isUSDXBT(it, assetName)){
+            if (isUSDXBT(it, assetName)) {
                 Price price = getPrice("xbtusd")
                 total += it.balance / price.last
                 return
@@ -45,6 +49,10 @@ class DefaultTradeService implements TradeService {
 
     private static boolean isUSD(AssetBalance it, String assetName) {
         it.assetName.toUpperCase() == "USD" && assetName.toUpperCase() == "USD"
+    }
+
+    private static boolean isAStakingAsset(AssetBalance it) {
+        it.assetName.toUpperCase().contains(".S") || it.assetName.toUpperCase().contains(".M")
     }
 
     private double getAssetPrice(String assetName, AssetBalance it, double assetPrice) {
@@ -69,7 +77,7 @@ class DefaultTradeService implements TradeService {
         new PingingThresholdClient().ping()
         def result = [:]
 
-        def pairs = thresholdClient.list().findAll{it.name.toUpperCase().contains("USD") || it.name.toUpperCase().contains("XBT")}
+        def pairs = thresholdClient.list().findAll { it.name.toUpperCase().contains("USD") || it.name.toUpperCase().contains("XBT") }
         return computeThresholdResponse(pairs, result)
     }
 

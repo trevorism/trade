@@ -5,14 +5,14 @@ buildscript {
             url "https://plugins.gradle.org/m2/"
         }
         maven {
-            url uri("http://trevorism-build.eastus.cloudapp.azure.com/nexus/repository/maven-releases")
+            url uri("https://trevorism-build.eastus.cloudapp.azure.com/nexus/repository/maven-releases")
         }
     }
     dependencies {
         classpath 'com.google.cloud.tools:appengine-gradle-plugin:2.1.0'
-        classpath 'com.trevorism:gradle-acceptance-plugin:2.0.0'
-        classpath 'com.trevorism:gradle-gae-deploy-plugin:1.1.1'
-        classpath 'com.trevorism:gradle-release-plugin:0.4.0'
+        classpath 'com.trevorism:gradle-acceptance-plugin:2.1.0'
+        classpath 'com.trevorism:gradle-gae-deploy-plugin:1.3.0'
+        classpath 'com.trevorism:gradle-release-plugin:0.5.0'
     }
 }
 
@@ -30,7 +30,7 @@ apply plugin: "com.trevorism.gradle.release"
 repositories {
     mavenCentral()
     maven {
-        url uri("http://trevorism-build.eastus.cloudapp.azure.com/nexus/repository/maven-releases")
+        url uri("https://trevorism-build.eastus.cloudapp.azure.com/nexus/repository/maven-releases")
     }
 }
 
@@ -48,7 +48,7 @@ dependencies {
     implementation 'io.swagger:swagger-jersey2-jaxrs:1.6.2'
 
     implementation 'com.trevorism:secure-utils:3.4.0'
-    implementation 'com.trevorism:kraken:0.5.0'
+    implementation 'com.trevorism:kraken:0.6.0'
     implementation 'com.trevorism:threshold-client:0.3.0'
     implementation 'com.trevorism:eventhub-client:2.3.0'
 
@@ -58,13 +58,12 @@ dependencies {
     testImplementation 'junit:junit:4.13.1'
 }
 
-
 appengine {
     deploy {
         projectId = "trevorism-trade"
         stopPreviousVersion = true
         promote = true
-        version = "0-5-0"
+        version = "0-6-0"
     }
 }
 
