@@ -26,9 +26,9 @@ jobs:
       - name: Chmod gradlew
         run: chmod +x ./gradlew
 
-      - name: Create secrets file
+      - name: Create test secrets file
         uses: Amadevus/pwsh-script@v2
-        id: script
+        id: testScript
         with:
           script: |
             Add-Content -Path .\src\test\resources\secrets.properties -Value 'clientId=${{ secrets.TEST_CLIENT_ID }}'
