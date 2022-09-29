@@ -37,7 +37,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          arguments: clean build appengineStage -x test
+          arguments: clean build appengineStage
 
       - name: Create secrets file
         uses: Amadevus/pwsh-script@v2

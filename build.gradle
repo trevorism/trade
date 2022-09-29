@@ -51,10 +51,10 @@ dependencies {
     implementation 'org.slf4j:slf4j-nop:1.7.36'
     implementation 'io.swagger:swagger-jersey2-jaxrs:1.6.6'
 
-    implementation 'com.trevorism:secure-utils:3.5.0'
-    implementation 'com.trevorism:kraken:0.7.0'
-    implementation 'com.trevorism:threshold-client:0.4.0'
-    implementation 'com.trevorism:eventhub-client:2.4.0'
+    implementation 'com.trevorism:secure-utils:4.0.0'
+    implementation 'com.trevorism:kraken:0.8.0'
+    implementation 'com.trevorism:threshold-client:0.5.0'
+    implementation 'com.trevorism:eventhub-client:2.5.0'
 
     acceptanceImplementation 'io.cucumber:cucumber-groovy:4.7.1'
     acceptanceImplementation 'org.apache.httpcomponents:httpclient:4.5.13'
