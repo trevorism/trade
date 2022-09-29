@@ -32,8 +32,8 @@ jobs:
         with:
           script: |
             New-Item -Path .\src\test\resources -ItemType Directory
-            Add-Content -Path .\src\test\resources\secrets.properties -Value 'clientId=${{ secrets.TEST_CLIENT_ID }}'
-            Add-Content -Path .\src\test\resources\secrets.properties -Value 'clientSecret=${{ secrets.TEST_SECRET_ID }}'
+            Add-Content -Path .\src\test\resources\secrets.properties -Value 'clientId=${{ secrets.CLIENT_ID }}'
+            Add-Content -Path .\src\test\resources\secrets.properties -Value 'clientSecret=${{ secrets.CLIENT_SECRET }}'
             Add-Content -Path .\src\test\resources\secrets.properties -Value 'apiKey=${{ secrets.API_KEY }}'
             Add-Content -Path .\src\test\resources\secrets.properties -Value 'apiSecret=${{ secrets.API_SECRET }}'
 
