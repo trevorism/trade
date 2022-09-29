@@ -12,10 +12,6 @@
             <param-value>io.swagger.jaxrs.listing;org.codehaus.jackson.jaxrs;com.trevorism.gcloud.webapi</param-value>
         </init-param>
         <init-param>
-            <param-name>javax.ws.rs.Application</param-name>
-            <param-value>com.trevorism.gcloud.StartupSecurity</param-value>
-        </init-param>
-        <init-param>
             <param-name>jersey.config.server.provider.scanning.recursive</param-name>
             <param-value>true</param-value>
         </init-param>
