@@ -21,7 +21,7 @@ jobs:
       CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
       SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
       API_KEY: ${{ secrets.API_KEY }}
-      API_SECRETS: ${{ secrets.API_SECRETS }}
+      API_SECRET: ${{ secrets.API_SECRET }}
       ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY }}
 
   call-accept-before:
