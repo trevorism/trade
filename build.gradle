@@ -53,7 +53,7 @@ dependencies {
 
     implementation 'com.trevorism:secure-utils:4.0.0'
     implementation 'com.trevorism:kraken:0.8.0'
-    implementation 'com.trevorism:threshold-client:0.7.0'
+    implementation 'com.trevorism:threshold-client:0.8.0'
 
     acceptanceImplementation 'io.cucumber:cucumber-groovy:4.7.1'
 
