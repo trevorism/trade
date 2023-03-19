@@ -74,9 +74,8 @@ class DefaultTradeService implements TradeService {
 
     @Override
     Map<String, Boolean> checkPairsAgainstThresholds() {
-        new PingingThresholdClient().ping()
+        thresholdClient.ping()
         def result = [:]
-
         def pairs = thresholdClient.list().findAll { it.name.toUpperCase().contains("USD") || it.name.toUpperCase().contains("XBT") }
         return computeThresholdResponse(pairs, result)
     }

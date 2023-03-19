@@ -33,7 +33,7 @@ class TradeServiceTest {
     @Test
     void testCheckPairsAgainstThresholds(){
         TradeService tradeService = new DefaultTradeService()
-        tradeService.thresholdClient = [list: {[new Threshold(name: "xrpusd")]}, evaluate: {pair, price, action -> true}] as ThresholdClient
+        tradeService.thresholdClient = [list: {[new Threshold(name: "xrpusd")]}, evaluate: {pair, price, action -> true}, ping:{}] as ThresholdClient
         tradeService.krakenClient = [getCurrentPrice: { pair -> new Price(last: 100)}] as KrakenClient
 
         def result = tradeService.checkPairsAgainstThresholds()
