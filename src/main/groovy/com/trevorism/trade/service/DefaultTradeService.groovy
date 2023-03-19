@@ -1,4 +1,4 @@
-package com.trevorism.gcloud.service
+package com.trevorism.trade.service
 
 import com.trevorism.kraken.KrakenClient
 import com.trevorism.kraken.impl.DefaultKrakenClient

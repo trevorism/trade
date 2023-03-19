@@ -1,4 +1,4 @@
-package com.trevorism.gcloud.webapi.controller
+package com.trevorism.trade.controller
 
 import com.trevorism.kraken.KrakenClient
 import com.trevorism.kraken.model.Asset
@@ -14,8 +14,8 @@ import com.trevorism.kraken.model.trade.MarketTrade
 import com.trevorism.kraken.model.trade.StopLossTrade
 import com.trevorism.kraken.model.trade.Trade
 import com.trevorism.kraken.model.trade.TradeResult
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 
 import java.time.Duration
 
@@ -23,7 +23,7 @@ class TradeControllerTest {
 
     private TradeController tradeController
 
-    @Before
+    @BeforeEach
     void setup(){
         tradeController = new TradeController()
         tradeController.krakenClient = new TestKrakenClient()

@@ -1,11 +1,11 @@
-package com.trevorism.gcloud
+package com.trevorism.trade
 
 /**
  * @author tbrooks
  */
 
-this.metaClass.mixin(cucumber.api.groovy.Hooks)
-this.metaClass.mixin(cucumber.api.groovy.EN)
+this.metaClass.mixin(io.cucumber.groovy.Hooks)
+this.metaClass.mixin(io.cucumber.groovy.EN)
 
 def contextRootContent
 def pingContent

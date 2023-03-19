@@ -1,13 +1,13 @@
-package com.trevorism.gcloud.services
+package com.trevorism.trade.services
 
-import com.trevorism.gcloud.service.DefaultTradeService
-import com.trevorism.gcloud.service.TradeService
+import com.trevorism.trade.service.DefaultTradeService
+import com.trevorism.trade.service.TradeService
 import com.trevorism.kraken.KrakenClient
 import com.trevorism.kraken.model.AssetBalance
 import com.trevorism.kraken.model.Price
 import com.trevorism.threshold.ThresholdClient
 import com.trevorism.threshold.model.Threshold
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 class TradeServiceTest {
 

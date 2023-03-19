@@ -1,0 +1,3 @@
+runtime: java17
+service: trade
+entrypoint: java -jar trade-all.jar
