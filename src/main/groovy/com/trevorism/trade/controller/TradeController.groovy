@@ -34,7 +34,7 @@ class TradeController {
     @Operation(summary = "Get the last 50 closed orders within the date range **Secure")
     @Post(value = "closed", produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON)
     @Secure(Roles.SYSTEM)
-    List<Order> queryForClosedOrders(DateRange dateRange){
+    List<Order> queryForClosedOrders(@Body DateRange dateRange){
         return krakenClient.getClosedOrders(dateRange)
     }
 
@@ -42,7 +42,7 @@ class TradeController {
     @Operation(summary = "Create a market order **Secure")
     @Post(value = "market", produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON)
     @Secure(Roles.SYSTEM)
-    TradeResult createMarketTradeOrder(MarketTrade marketTrade){
+    TradeResult createMarketTradeOrder(@Body MarketTrade marketTrade){
         return krakenClient.createOrder(marketTrade)
     }
 
@@ -50,7 +50,7 @@ class TradeController {
     @Operation(summary  = "Create a limit order **Secure")
     @Post(value = "limit", produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON)
     @Secure(Roles.SYSTEM)
-    TradeResult createLimitTradeOrder(LimitTrade limitTrade){
+    TradeResult createLimitTradeOrder(@Body LimitTrade limitTrade){
         return krakenClient.createOrder(limitTrade)
     }
 
@@ -58,7 +58,7 @@ class TradeController {
     @Operation(summary = "Create a stop loss order **Secure")
     @Post(value = "stoploss", produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON)
     @Secure(Roles.SYSTEM)
-    TradeResult createStopLossTradeOrder(StopLossTrade stopLossTrade){
+    TradeResult createStopLossTradeOrder(@Body StopLossTrade stopLossTrade){
         return krakenClient.createOrder(stopLossTrade)
     }
 
