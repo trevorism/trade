@@ -5,7 +5,6 @@ import com.trevorism.kraken.impl.DefaultKrakenClient
 import com.trevorism.kraken.model.AssetBalance
 import com.trevorism.kraken.model.Price
 import com.trevorism.threshold.FastThresholdClient
-import com.trevorism.threshold.PingingThresholdClient
 import com.trevorism.threshold.ThresholdClient
 import com.trevorism.threshold.model.Threshold
 import com.trevorism.threshold.strategy.AlertWhenThresholdMet
