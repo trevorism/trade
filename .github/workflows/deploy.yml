@@ -15,13 +15,12 @@ jobs:
 
   call-deploy:
     uses: trevorism/actions-workflows/.github/workflows/deploy.yml@master
-    if: success() || failure()
-    needs: [call-build, call-accept-before]
+    needs: [call-build]
     with:
       JDK_VERSION: 17
       gcp_project: 'trevorism-trade'
       gcp_project_id: '115921067586'
-      version: '0-8-0'
+      version: '0-9-0'
     secrets:
       CLIENT_ID: ${{ secrets.CLIENT_ID }}
       CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
@@ -29,13 +28,6 @@ jobs:
       API_KEY: ${{ secrets.API_KEY }}
       API_SECRET: ${{ secrets.API_SECRET }}
       ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY }}
-
-  call-accept-before:
-    uses: trevorism/actions-workflows/.github/workflows/accept.yml@master
-    with:
-      JDK_VERSION: 17
-    secrets:
-      TOKEN: ${{ secrets.TOKEN }}
 
   call-accept-after:
     uses: trevorism/actions-workflows/.github/workflows/accept.yml@master
