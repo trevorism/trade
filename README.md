@@ -6,8 +6,6 @@
 
 Trevorism trading platform API
 
-Current version: 0.9.0
-
 [Trevorism Trading](https://trade.trevorism.com/)
 
 # How to build

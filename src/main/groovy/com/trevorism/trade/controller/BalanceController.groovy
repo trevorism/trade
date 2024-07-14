@@ -34,7 +34,7 @@ class BalanceController {
     @Tag(name = "Balance Operations")
     @Operation(summary = "Get the total account balance for each asset **Secure")
     @Get(value = "/", produces = MediaType.APPLICATION_JSON)
-    @Secure(Roles.USER)
+    @Secure(Roles.SYSTEM)
     Set<AssetBalance> getAccountBalance() {
         tradeService.getAccountBalance()
     }
@@ -42,7 +42,7 @@ class BalanceController {
     @Tag(name = "Balance Operations")
     @Operation(summary = "Get the current account value in terms of an asset name **Secure")
     @Get(value = "total/{assetName}", produces = MediaType.APPLICATION_JSON)
-    @Secure(Roles.USER)
+    @Secure(Roles.SYSTEM)
     double getTotal(String assetName) {
         tradeService.getTotal(assetName)
     }

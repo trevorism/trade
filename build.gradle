@@ -51,7 +51,7 @@ dependencies {
     runtimeOnly("org.yaml:snakeyaml")
 
     implementation("jakarta.annotation:jakarta.annotation-api")
-    implementation 'io.projectreactor:reactor-core:3.6.5'
+    implementation 'io.projectreactor:reactor-core:3.6.7'
 
     implementation("io.swagger.core.v3:swagger-annotations")
     compileOnly("io.micronaut.openapi:micronaut-openapi"){
@@ -60,8 +60,8 @@ dependencies {
 
     runtimeOnly("ch.qos.logback:logback-classic")
 
-    implementation 'com.trevorism:micronaut-security-utils:1.1.0'
-    implementation 'com.trevorism:kraken:0.9.0'
+    implementation 'com.trevorism:micronaut-security-utils:2.2.0'
+    implementation 'com.trevorism:kraken:1.0.0'
     implementation 'com.trevorism:threshold-client:1.1.0'
 
     testImplementation 'com.trevorism:test-result-events:0.3.0'
@@ -91,7 +91,7 @@ appengine {
     stage.artifact = layout.buildDirectory.file("libs/${project.name}-all.jar")
     deploy {
         projectId = "trevorism-trade"
-        version = "0-9-0"
+        version = "0-9-1"
         stopPreviousVersion = true
         promote = true
     }
