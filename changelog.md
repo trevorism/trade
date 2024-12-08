@@ -1,3 +1,7 @@
+## 1.0.0
+
+Update micronaut and other dependencies. Fixed an issue with alerting.
+
 ## 0.9.1
 
 Update micronaut and other dependencies. Improved security of endpoints.
