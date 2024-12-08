@@ -1,5 +1,7 @@
 package com.trevorism.trade.service
 
+import com.trevorism.https.AppClientSecureHttpClient
+import com.trevorism.https.SecureHttpClient
 import com.trevorism.kraken.KrakenClient
 import com.trevorism.kraken.impl.DefaultKrakenClient
 import com.trevorism.kraken.model.AssetBalance
@@ -11,7 +13,8 @@ import com.trevorism.threshold.strategy.AlertWhenThresholdMet
 
 class DefaultTradeService implements TradeService {
 
-    private ThresholdClient thresholdClient = new FastThresholdClient()
+    private SecureHttpClient httpClient = new AppClientSecureHttpClient()
+    private ThresholdClient thresholdClient = new FastThresholdClient(httpClient)
     private KrakenClient krakenClient = new DefaultKrakenClient()
 
     @Override
@@ -74,16 +77,16 @@ class DefaultTradeService implements TradeService {
     @Override
     Map<String, Boolean> checkPairsAgainstThresholds() {
         thresholdClient.ping()
-        def result = [:]
         def pairs = thresholdClient.list().findAll { it.name.toUpperCase().contains("USD") || it.name.toUpperCase().contains("XBT") }
-        return computeThresholdResponse(pairs, result)
+        return computeThresholdResponse(pairs)
     }
 
-    private LinkedHashMap<Object, Object> computeThresholdResponse(List<Threshold> pairs, Map<String, Boolean> result) {
+    private Map<String, Boolean> computeThresholdResponse(List<Threshold> pairs) {
+        Map<String, Boolean> result = [:]
         pairs?.each { threshold ->
             String pairName = threshold.name
             Price price = getPrice(pairName)
-            def thresholdResponse = thresholdClient.evaluate(pairName, price.last, new AlertWhenThresholdMet())
+            def thresholdResponse = thresholdClient.evaluate(pairName, price.last, new AlertWhenThresholdMet(httpClient))
             result.put(pairName, thresholdResponse)
         }
         return result

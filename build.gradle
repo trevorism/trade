@@ -60,7 +60,7 @@ dependencies {
 
     runtimeOnly("ch.qos.logback:logback-classic")
 
-    implementation 'com.trevorism:micronaut-security-utils:2.2.0'
+    implementation 'com.trevorism:micronaut-utility-beans:1.6.0'
     implementation 'com.trevorism:kraken:1.0.0'
     implementation 'com.trevorism:threshold-client:1.1.0'
 
