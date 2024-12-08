@@ -4,7 +4,7 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/trevorism/trade)
 ![GitHub top language](https://img.shields.io/github/languages/top/trevorism/trade)
 
-Trevorism trading platform API
+Trevorism crypto trading API
 
 [Trevorism Trading](https://trade.trevorism.com/)
 
