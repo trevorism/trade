@@ -1,3 +1,7 @@
+## 1.1.0
+
+Include kraken update regarding staking and other non-standard assets. 
+
 ## 1.0.0
 
 Update micronaut and other dependencies. Fixed an issue with alerting.

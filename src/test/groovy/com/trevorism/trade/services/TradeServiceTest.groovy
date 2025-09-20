@@ -46,6 +46,7 @@ class TradeServiceTest {
         TradeService tradeService = new DefaultTradeService()
         tradeService.thresholdClient = [list: {[new Threshold(name: "xrpusd")]}, evaluate: {pair, price, action -> true}] as ThresholdClient
         tradeService.krakenClient = [getCurrentPrice: { pair -> new Price(last: 100)}, getAccountBalances:{ -> [new AssetBalance(assetName: "testUSD", balance: 10)] as Set}] as KrakenClient
+
         assert 1000d == tradeService.getTotal("USD")
     }
 }

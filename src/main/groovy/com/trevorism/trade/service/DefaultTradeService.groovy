@@ -26,8 +26,9 @@ class DefaultTradeService implements TradeService {
 
         getAccountBalance().each {
             double assetPrice = 1
-            if (isAStakingAsset(it)) {
-                return
+
+            if(it.assetName[-2] == '.'){
+                it.assetName = it.assetName[0..-3]
             }
 
             if (isUSD(it, assetName)) {
@@ -50,11 +51,7 @@ class DefaultTradeService implements TradeService {
     }
 
     private static boolean isUSD(AssetBalance it, String assetName) {
-        it.assetName.toUpperCase() == "USD" && assetName.toUpperCase() == "USD"
-    }
-
-    private static boolean isAStakingAsset(AssetBalance it) {
-        it.assetName.toUpperCase().contains(".S") || it.assetName.toUpperCase().contains(".M")
+        assetName.toUpperCase() && (it.assetName.toUpperCase() == "USD" || it.assetName.toUpperCase() == "ZUSD")
     }
 
     private double getAssetPrice(String assetName, AssetBalance it, double assetPrice) {

@@ -1,2 +1,2 @@
-runtime: java17
+runtime: java21
 entrypoint: java -jar trade-all.jar
