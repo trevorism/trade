@@ -97,10 +97,6 @@ appengine {
     }
 }
 
-acceptanceSettings {
-    stepDefinitionPackageRoot = "com/trevorism/trade"
-}
-
 test {
     systemProperty ("trevorism.test.event", findProperty("trevorism.test.event") == "enabled" ? project.name : null)
 }
