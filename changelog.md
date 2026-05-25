@@ -1,3 +1,7 @@
+## 1.2.0
+
+Upgrade to Micronaut 5.0.0, Java 25, Gradle 9.x, and latest dependencies.
+
 ## 1.1.0
 
 Include kraken update regarding staking and other non-standard assets. 
