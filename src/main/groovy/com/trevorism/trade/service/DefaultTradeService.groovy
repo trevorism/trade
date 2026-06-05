@@ -17,6 +17,11 @@ class DefaultTradeService implements TradeService {
     private ThresholdClient thresholdClient = new FastThresholdClient(httpClient)
     private KrakenClient krakenClient = new DefaultKrakenClient()
 
+    private static final Map<String, String> ASSET_ALIASES = [
+            "XXBT": "BTC",
+            "XBT" : "BTC",
+    ]
+
     @Override
     double getTotal(String assetName) {
         double total = 0
@@ -54,9 +59,15 @@ class DefaultTradeService implements TradeService {
         assetName.toUpperCase() && (it.assetName.toUpperCase() == "USD" || it.assetName.toUpperCase() == "ZUSD")
     }
 
+    private static String normalizeAssetName(String name) {
+        ASSET_ALIASES.getOrDefault(name.toUpperCase(), name.toUpperCase())
+    }
+
     private double getAssetPrice(String assetName, AssetBalance it, double assetPrice) {
-        if (assetName.toLowerCase() != it.assetName.toLowerCase()) {
-            assetPrice = getPrice("${it.assetName}${assetName}").last
+        String normalizedAsset = normalizeAssetName(it.assetName)
+        String normalizedTarget = normalizeAssetName(assetName)
+        if (normalizedTarget != normalizedAsset) {
+            assetPrice = getPrice("${normalizedAsset}${normalizedTarget}").last
         }
         assetPrice
     }
