@@ -1,3 +1,7 @@
+## 1.3.0
+
+Update some dependencies and route http -> https
+
 ## 1.2.0
 
 Upgrade to Micronaut 5.0.0, Java 25, Gradle 9.x, and latest dependencies.

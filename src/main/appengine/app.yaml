@@ -1,2 +1,7 @@
 runtime: java25
 entrypoint: java -jar trade-all.jar
+handlers:
+  - url: /.*
+    secure: always
+    redirect_http_response_code: 301
+    script: auto
