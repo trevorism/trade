@@ -1,3 +1,7 @@
+## 1.4.0
+
+Fix some bugs normalizing some pairs.
+
 ## 1.3.0
 
 Update some dependencies and route http -> https
